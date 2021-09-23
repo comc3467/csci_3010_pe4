@@ -10,14 +10,16 @@ char** CreateBoard(){
     }
     return board_;
 }
-void DisplayBoard(char** board_){
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            std::cout << board_[i][j];
+
+void DisplayBoard(char ** board){
+    for(int  c = 0; c < 3; c++){
+        for(int r = 0; r < 3; r++){
+            std::cout << board[c][r] <<" ";
         }
         std::cout << std::endl;
     }
 }
+
 int* GetPlayerChoice(){ //returns a pointer to an array of choices, row and column in the 0th and 1st indices
     std::cout << "Please enter a coordinate to play. (Top left is 0,0 – Bottom right is 2,2" << std::endl;
     std::cout << "Enter row: ";
