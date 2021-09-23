@@ -10,13 +10,16 @@ char** CreateBoard(){
     }
     return board_;
 }
-
-int main(){
-    char** board_ = CreateBoard();
+void DisplayBoard(char** board_){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             std::cout << board_[i][j];
         }
         std::cout << std::endl;
     }
+}
+
+int main(){
+    char** board_ = CreateBoard();
+    DisplayBoard(board_);
 }
