@@ -20,12 +20,23 @@ void DisplayBoard(char ** board){
     }
 }
 
+int* GetPlayerChoice(){ //returns a pointer to an array of choices, row and column in the 0th and 1st indices
+    std::cout << "Please enter a coordinate to play. (Top left is 0,0 – Bottom right is 2,2" << std::endl;
+    std::cout << "Enter row: ";
+    int row = -1;
+    std::cin >> row;
+    std::cout  << "Enter column: ";
+    int col = -1;
+    std::cin >> col;
+    int return_array[] = {row, col}; //basically a tuple
+    return return_array;
+}
+
 int main(){
     char** board_ = CreateBoard();
-    for(int i = 0; i < 3; i++){
-        for(int j = 0; j < 3; j++){
-            std::cout << board_[i][j];
-        }
-        std::cout << std::endl;
-    }
+    DisplayBoard(board_);
+    int* return_array = GetPlayerChoice(); //so return_array[0] is the row, return_array[1] is the column
+    //std::cout << return_array[1];
+
+    //free(board_);
 }
