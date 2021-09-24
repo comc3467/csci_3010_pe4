@@ -61,7 +61,7 @@ int main(){
     int turn = 0;
     for(int i = 0; i < 9; i++){
         std::vector<int> return_array = GetPlayerChoice();
-       // std::cout <<return_array[0] << " " << return_array[1] << std::endl;
+        std::cout <<return_array[0] << " " << return_array[1] << std::endl;
        PlaceMarker(board_, return_array[0], return_array[1], turn);
         DisplayBoard(board_);
         turn = 1 - turn; //take turn between 0 and 1

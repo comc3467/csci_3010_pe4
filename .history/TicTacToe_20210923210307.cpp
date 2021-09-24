@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 
 char** CreateBoard(){
     char **board_ = new char*[3];
@@ -12,18 +11,16 @@ char** CreateBoard(){
     return board_;
 }
 
-void DisplayBoard(char **board){
+void DisplayBoard(char ** board){
     for(int  c = 0; c < 3; c++){
         for(int r = 0; r < 3; r++){
-            std::cout << board[c][r];
+            std::cout << board[c][r] <<" ";
         }
         std::cout << std::endl;
     }
 }
 
-
-
-std::vector<int> GetPlayerChoice(){ //returns a pointer to an array of choices, row and column in the 0th and 1st indices
+int* GetPlayerChoice(){ //returns a pointer to an array of choices, row and column in the 0th and 1st indices
     std::cout << "Please enter a coordinate to play. (Top left is 0,0 – Bottom right is 2,2" << std::endl;
     std::cout << "Enter row: ";
     int row = -1;
@@ -31,40 +28,37 @@ std::vector<int> GetPlayerChoice(){ //returns a pointer to an array of choices, 
     std::cout  << "Enter column: ";
     int col = -1;
     std::cin >> col;
-    //int return_array[] = {row, col}; //basically a tuple
-    std::vector<int> return_array = {row, col};
+    int return_array[] = {row, col}; //basically a tuple
     return return_array;
 }
 
 
-
-
-void PlaceMarker(char **Board, int c, int r, int turn){
-    if(turn){
-        Board[c][r] = 'O'; //O for one player, X for the other player
+bool PlaceMarker(char** & Board, int c, int r, int turn){
+    if(Board[c][r] == '_'){
+        return false;
     }else{
-        Board[c][r] = 'X';
+        if(turn ==0){
+            Board[c][r] = 'O';
+        }else{
+            Board[c][r] = 'X';
+        }
+        
     }
-    //return true;
+    DisplayBoard(Board);
 }
 
 int main(){
     char** board_ = CreateBoard();
-
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             std::cout << board_[i][j];
         }
         std::cout << std::endl;
     }
-    
     int turn = 0;
     for(int i = 0; i < 9; i++){
-        std::vector<int> return_array = GetPlayerChoice();
-       // std::cout <<return_array[0] << " " << return_array[1] << std::endl;
-       PlaceMarker(board_, return_array[0], return_array[1], turn);
-        DisplayBoard(board_);
-        turn = 1 - turn; //take turn between 0 and 1
-    } 
-
+        int* return_array = GetPlayerChoice();
+        PlaceMarker(board_, return_array[1], return_array[0], turn);
+        turn = 1 - turn;
+    }
 }

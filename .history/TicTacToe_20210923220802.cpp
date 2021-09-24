@@ -57,12 +57,24 @@ int main(){
         }
         std::cout << std::endl;
     }
-    
+    char arr[3][3];
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < 3; j++){
+            arr[i][j] = board_[i][j];
+        }
+    } 
     int turn = 0;
+    //int* return_array = GetPlayerChoice();
+        //std::cout << *return_array <<" "<< *(return_array+) << std::endl;
+    //std::cout<<return_array[0] << " "<< return_array[1]  << std::endl;
+   // PlaceMarker(board_, 1,1,0);
+   // DisplayBoard(board_);
     for(int i = 0; i < 9; i++){
         std::vector<int> return_array = GetPlayerChoice();
-       // std::cout <<return_array[0] << " " << return_array[1] << std::endl;
-       PlaceMarker(board_, return_array[0], return_array[1], turn);
+        //std::cout << *return_array <<" "<< *(return_array+) << std::endl;
+        std::cout << return_array[1] << " "<< return_array[0]  << std::endl;
+
+       PlaceMarker(board_, return_array[1], return_array[0], turn);
         DisplayBoard(board_);
         turn = 1 - turn; //take turn between 0 and 1
     } 
