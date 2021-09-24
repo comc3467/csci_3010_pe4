@@ -21,6 +21,7 @@ void DisplayBoard(char ** board){
 }
 
 
+
 int* GetPlayerChoice(){ //returns a pointer to an array of choices, row and column in the 0th and 1st indices
     std::cout << "Please enter a coordinate to play. (Top left is 0,0 – Bottom right is 2,2" << std::endl;
     std::cout << "Enter row: ";
@@ -31,6 +32,7 @@ int* GetPlayerChoice(){ //returns a pointer to an array of choices, row and colu
     std::cin >> col;
     int return_array[] = {row, col}; //basically a tuple
     return return_array;
+
 
 void PlaceMarker(char** & Board, int c, int r){
     Board[c][r] = '@';
