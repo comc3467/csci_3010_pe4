@@ -22,24 +22,22 @@ void DisplayBoard(char ** board){
 
 
 
-
 bool PlaceMarker(char** & Board, int c, int r, int turn){
     if(Board[c][r] == '_'){
         return false;
     }else{
         if(turn ==0){
-            Board[c][r] = 'O'; //O for one player, X for the other player
+            Board[c][r] = 'O';
         }else{
             Board[c][r] = 'X';
         }
         
     }
-    return true;
+    DisplayBoard(Board);
 }
 
 int main(){
     char** board_ = CreateBoard();
-
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             std::cout << board_[i][j];
@@ -50,8 +48,7 @@ int main(){
     for(int i = 0; i < 9; i++){
         int* return_array = GetPlayerChoice();
         PlaceMarker(board_, return_array[1], return_array[0], turn);
-        DisplayBoard(board_);
-        turn = 1 - turn; //take turn between 0 and 1
+        turn = turn - 1;
     }
-
+    
 }
