@@ -20,6 +20,17 @@ void DisplayBoard(char ** board){
     }
 }
 
+int* GetPlayerChoice(){ //returns a pointer to an array of choices, row and column in the 0th and 1st indices
+    std::cout << "Please enter a coordinate to play. (Top left is 0,0 – Bottom right is 2,2" << std::endl;
+    std::cout << "Enter row: ";
+    int row = -1;
+    std::cin >> row;
+    std::cout  << "Enter column: ";
+    int col = -1;
+    std::cin >> col;
+    int return_array[] = {row, col}; //basically a tuple
+    return return_array;
+}
 
 
 bool PlaceMarker(char** & Board, int c, int r, int turn){
@@ -27,14 +38,13 @@ bool PlaceMarker(char** & Board, int c, int r, int turn){
         return false;
     }else{
         if(turn ==0){
-            Board[c][r] = 'O'; //O for one player, X for the other player
+            Board[c][r] = 'O';
         }else{
             Board[c][r] = 'X';
         }
         
     }
     DisplayBoard(Board);
-    return true;
 }
 
 int main(){
@@ -49,6 +59,6 @@ int main(){
     for(int i = 0; i < 9; i++){
         int* return_array = GetPlayerChoice();
         PlaceMarker(board_, return_array[1], return_array[0], turn);
-        turn = 1 - turn; //take turn between 0 and 1
+        turn = 1 - turn;
     }
 }

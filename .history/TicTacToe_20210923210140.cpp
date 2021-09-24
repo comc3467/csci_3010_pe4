@@ -27,14 +27,13 @@ bool PlaceMarker(char** & Board, int c, int r, int turn){
         return false;
     }else{
         if(turn ==0){
-            Board[c][r] = 'O'; //O for one player, X for the other player
+            Board[c][r] = 'O';
         }else{
             Board[c][r] = 'X';
         }
         
     }
     DisplayBoard(Board);
-    return true;
 }
 
 int main(){
@@ -49,6 +48,7 @@ int main(){
     for(int i = 0; i < 9; i++){
         int* return_array = GetPlayerChoice();
         PlaceMarker(board_, return_array[1], return_array[0], turn);
-        turn = 1 - turn; //take turn between 0 and 1
+        turn = turn - 1;
     }
+    
 }
